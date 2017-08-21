@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>My test page</title>
+  <script src="src/vendor/require.js"></script>
+  <script>
+    requirejs.config({
+      waitSeconds: 0
+    });
+  </script>
+</head>
+
+<body>
+  Depth: <input id="depth" type="number" step="1" min="1" value="5" max="500"><br />
+  Branching Factor: <input id="branch" type="number" step="1" min="1" value="2" max="50"><br />
+  <button id="run">Run</button>
+  <div id="report"></div>
+
+  <script>
+    var depthElt = document.getElementById('depth');
+    var branchElt = document.getElementById('branch');
+    var runElt = document.getElementById('run');
+    var reportElt = document.getElementById('report');
+
+    runElt.addEventListener('click', function () {
+      var start = performance.now();
+      reportElt.textContent = "Running..."
+
+      var depth = parseInt(depthElt.value, 10);
+      var branch = parseInt(branchElt.value, 10);
+      var totalRequests = (Math.pow(branch, depth + 1) - 1)/(branch - 1);
+      reportElt.textContent = "Running " + totalRequests + " requests..."
+
+      require(['tree/' + depth + '/' + branch + '/0'], function () {
+        var elapsed = performance.now() - start;
+        reportElt.textContent = "" + totalRequests + " requests took " + elapsed + " ms."
+      });
+    });
+  </script>
+</body>
+
+</html>
