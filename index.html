@@ -13,29 +13,29 @@
 </head>
 
 <body>
-  Depth: <input id="depth" type="number" step="1" min="1" value="5" max="500"><br />
-  Branching Factor: <input id="branch" type="number" step="1" min="1" value="2" max="50"><br />
+  Number of files: <input id="numfiles" type="number" step="1" min="1" value="100" max="10000"><br />
+  Branching Factor: <input id="branch" type="number" step="1" min="1" value="2" max="100"><br />
   <button id="run">Run</button>
   <div id="report"></div>
 
   <script>
-    var depthElt = document.getElementById('depth');
+    var numFilesElt = document.getElementById('numfiles');
     var branchElt = document.getElementById('branch');
     var runElt = document.getElementById('run');
     var reportElt = document.getElementById('report');
 
     runElt.addEventListener('click', function () {
+      runElt.parentNode.removeChild(runElt);
       var start = performance.now();
       reportElt.textContent = "Running..."
 
-      var depth = parseInt(depthElt.value, 10);
+      var numFiles = parseInt(numFilesElt.value, 10);
       var branch = parseInt(branchElt.value, 10);
-      var totalRequests = (Math.pow(branch, depth + 1) - 1)/(branch - 1);
-      reportElt.textContent = "Running " + totalRequests + " requests..."
+      reportElt.textContent = "Running " + numFiles + " requests..."
 
-      require(['tree/' + depth + '/' + branch + '/0'], function () {
+      require(['tree/' + numFiles + '/' + branch + '/0'], function () {
         var elapsed = performance.now() - start;
-        reportElt.textContent = "" + totalRequests + " requests took " + elapsed + " ms."
+        reportElt.textContent = "" + numFiles + " requests took " + elapsed + " ms."
       });
     });
   </script>
