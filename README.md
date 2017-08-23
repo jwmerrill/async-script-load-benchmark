@@ -7,10 +7,14 @@ Designed as a benchmark for loading many files with dev tools open.
 ## Hosted version
 Hosted version at https://blooming-hamlet-93701.herokuapp.com/
 
+Note: I recommend running the server locally instead of using the hosted version because the hosted version is on a slow free server, and the slowness of network and the server may confound results of the test.
+
 ## Install
 ```
 yarn
 ```
+
+Alternatively, `npm install` should also work.
 
 ## Run
 ```
