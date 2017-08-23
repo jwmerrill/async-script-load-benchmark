@@ -4,7 +4,7 @@ In other words, each file will require a number of additional files specified by
 
 Designed as a benchmark for loading many files with dev tools open.
 
-## Use
+## Hosted version
 Hosted version at https://blooming-hamlet-93701.herokuapp.com/
 
 ## Install
@@ -17,7 +17,16 @@ yarn
 npm run start
 ```
 
+To run on a different port, specify PORT as an env variable:
+```
+env PORT=4321 npm run start
+```
+
 ## Use
 ```
-http://localhost:8001/
+http://localhost:5000/
 ```
+
+Specify the number of files and the branching factor, and press "Run" to load files. To run a new test, reload the page.
+
+Try running the test both with and without dev tools, and with different panels open in the dev tools.
