@@ -7,6 +7,8 @@ app.set('etag', false);
 app.use(morgan('combined'));
 app.use(express.static(__dirname));
 
+app.set('port', (process.env.PORT || 5000));
+
 function generalParseInt(digits, radix) {
   // Apparently, parseInt is limited to radix 2-36
   var total = 0;
@@ -53,6 +55,6 @@ app.get(/^\/tree\/(\d+)\/(\d+)\/(\d+)/, function (req, res) {
   res.send(out);
 });
 
-app.listen(8001, function () {
-  console.log('Example app listening on port 8001!')
+app.listen(app.get('port'), function () {
+  console.log('App listening on port ' + app.get('port'))
 })
