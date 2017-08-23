@@ -1,6 +1,10 @@
 const express = require('express')
+const morgan = require('morgan');
 const app = express()
 
+// Disable etag caching
+app.set('etag', false);
+app.use(morgan('combined'));
 app.use(express.static(__dirname));
 
 function generalParseInt(digits, radix) {
