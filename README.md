@@ -4,6 +4,9 @@ In other words, each file will require a number of additional files specified by
 
 Designed as a benchmark for loading many files with dev tools open.
 
+## Use
+Hosted version at https://blooming-hamlet-93701.herokuapp.com/
+
 ## Install
 ```
 yarn
